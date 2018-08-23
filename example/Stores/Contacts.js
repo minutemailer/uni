@@ -13,15 +13,16 @@ class Contacts extends Store {
     onAddContact(payload, events) {
         this.emit(events.init);
 
-        axios.get('https://uifaces.co/api?limit=1&random')
+        axios.get('https://randomuser.me/api')
             .then((response) => {
                 if (response.data.error) {
                     throw new Error(response.data.error);
                 }
 
-                this.state.contacts.push(response.data[0]);
+                const contact = response.data.results[0];
 
-                this.emit(events.done, this.state.contacts);
+                this.state.contacts.push(contact);
+                this.emit(events.done, contact);
             }).catch(() => {
                 this.emit(events.error, 'Failed to fetch');
             });
