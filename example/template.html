@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <title><%= htmlWebpackPlugin.options.title %></title>
+        <style>
+            body {
+                font-family: 'Open Sans', sans-serif;
+                padding: 40px;
+            }
+
+            .btn {
+                border-radius: 3px;
+                box-sizing: border-box;
+                padding: 0 10px;
+                margin: 0;
+                line-height: 32px;
+                height: 32px;
+                border: 1px solid #666;
+                text-align: center;
+                display: inline-block;
+                font-size: 12px;
+                font-weight: 400;
+                color: #333;
+                background: transparent;
+                outline: none;
+                text-decoration: none;
+                cursor: pointer;
+                font-family: 'Open Sans', sans-serif;
+                white-space: nowrap;
+            }
+
+            .btn:hover {
+                border-color: #27ae60;
+                color: #27ae60;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="add" class="btn">Add contact</button>
+
+        <div class="contacts" id="contacts">
+        </div>
+    </body>
+</html>
