@@ -14,13 +14,12 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.39",
     "@babel/register": "^7.0.0-beta.40",
+    "babel-loader": "^8.0.0-beta.0",
     "css-loader": "^0.28.9",
     "html-webpack-plugin": "^2.30.1",
     "style-loader": "^0.20.1",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^2.11.1",
     "axios": "^0.18.0"
   }
 }
