@@ -1,12 +1,29 @@
 {
-  "name": "uni",
+  "name": "@minutemailer/uni",
   "version": "0.0.1",
   "description": "Simple, lightweight Flux inspired uni-directional dataflow architecture",
   "main": "index.js",
-  "private": true,
   "scripts": {
     "start": "webpack-dev-server --config example/webpack.config.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minutemailer/uni.git"
+  },
+  "keywords": [
+    "flux",
+    "data",
+    "js",
+    "javascript",
+    "minutemailer",
+    "lightweight"
+  ],
+  "author": "Tobias Bleckert (Minutemailer)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/minutemailer/uni/issues"
+  },
+  "homepage": "https://github.com/minutemailer/uni",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.39",
     "@babel/core": "^7.0.0-beta.40",
