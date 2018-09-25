@@ -12,8 +12,7 @@ export default class Store extends EventEmitter {
     bindActions() {
         Object.entries(this.actions).forEach((entry) => {
             const [name, action] = entry;
-
-            this[name] = (payload) => this[action.method](payload, action.events);
+            this[name] = payload => this[action.method](payload, action.events);
         });
     }
 }

@@ -8,7 +8,7 @@ const createActions = (actions) => {
                 init: `${action}.init`,
                 done: `${action}.done`,
                 error: `${action}.error`,
-            }
+            },
         };
     });
 

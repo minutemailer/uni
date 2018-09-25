@@ -1,10 +1,11 @@
 {
   "name": "@minutemailer/uni",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple, lightweight Flux inspired uni-directional dataflow architecture",
-  "main": "index.js",
+  "main": "dist",
   "scripts": {
-    "start": "webpack-dev-server --config example/webpack.config.js"
+    "start": "webpack-dev-server --config example/webpack.config.js",
+    "build": "NODE_ENV=production babel src --out-dir dist"
   },
   "repository": {
     "type": "git",
