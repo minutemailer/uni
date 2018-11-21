@@ -11,10 +11,10 @@ The goal of Uni is to reduce boilerplate to barely none and to have free control
 So what is happening?
 
 ```
-+ -- [Action is dispatched] ----------------> [Store updates internal state] -- +
-|                                                                               |
-|                                                                               |
-+ -- [View reacts on state update] <---- [Store emits state change event] <---- +
++ -- [Action] ---------> [Store handler] -- +
+|                                           |
+|                                           |
++ -- [View change] <---- [Store change] <-- +
 ```
 
 The store only has one task and that is to update its internal state. 
