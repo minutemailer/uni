@@ -1,8 +1,9 @@
-# Minutemailer Uni
+<h1 align="center">Minutemailer Uni</h1>
 
 <p align="center">
 Simple, lightweight Redux/Unistore inspired uni-directional dataflow architecture.
 </p>
+<p>&nbsp;</p>
 
 ## Core concept
 
