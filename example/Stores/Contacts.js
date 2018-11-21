@@ -1,36 +1,29 @@
-import { createActions, Store } from '../../index';
-import axios from 'axios';
+import { Store } from '../../src';
+import update from 'immutability-helper';
 
 class Contacts extends Store {
-    constructor(actions) {
-        super(actions);
+    state = {
+        loading: false,
+        contacts: [],
+        failed: false,
+        failedReason: null,
+    };
 
-        this.state = {
-            contacts: []
-        };
-    }
-
-    onAddContact(payload, events) {
-        this.emit(events.init);
-
-        axios.get('https://randomuser.me/api')
-            .then((response) => {
-                if (response.data.error) {
-                    throw new Error(response.data.error);
+    onFetchContact() {
+        fetch('https://randomuser.me/api')
+            .then(response => response.json())
+            .then((json) => {
+                if (json.error) {
+                    throw new Error(json.error);
                 }
 
-                const contact = response.data.results[0];
-
-                this.state.contacts.push(contact);
-                this.emit(events.done, contact);
-            }).catch(() => {
-                this.emit(events.error, 'Failed to fetch');
+                this.setState({ contacts: update(this.state.contacts, { $push: json.results }), loading: false });
+            }).catch((ex) => {
+                this.setState({ loading: false, failed: true, failedReason: ex });
             });
-    }
+
+        return { loading: true };
+    };
 }
 
-const contacts = new Contacts(createActions([
-    'addContact',
-]));
-
-export default contacts;
+export default new Contacts();

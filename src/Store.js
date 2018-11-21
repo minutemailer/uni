@@ -1,18 +1,41 @@
-import { EventEmitter } from 'events';
+export default class Store {
+    subscribers = [];
 
-export default class Store extends EventEmitter {
-    constructor(actions) {
-        super();
+    setState(nextState) {
+        const prevState = this.state;
 
-        this.actions = actions;
-
-        this.bindActions();
+        this.state = Object.assign({}, this.state, nextState);
+        this.emit(this.state, nextState, prevState);
     }
 
-    bindActions() {
-        Object.entries(this.actions).forEach((entry) => {
-            const [name, action] = entry;
-            this[name] = payload => this[action.method](payload, action.events);
-        });
+    emit(...args) {
+        this.subscribers.forEach(cb => cb.call(null, ...args));
     }
+
+    subscribe(cb) {
+        this.subscribers.push(cb);
+
+        return {
+            unsubscribe: () => {
+                this.subscribers = this.subscribers.filter(subscribedCb => subscribedCb !== cb);
+            }
+        };
+    }
+
+    dispatch = (payload = {}) => {
+        const { type, ...data } = payload;
+        const method = `on${type.charAt(0).toUpperCase() + type.slice(1)}`;
+
+        if (!(method in this) || typeof this[method] !== 'function') {
+            console.warn(`Handler missing for action ${method}`);
+
+            return;
+        }
+
+        const updatedState = this[method](data);
+
+        if (updatedState) {
+            this.setState(updatedState);
+        }
+    };
 }

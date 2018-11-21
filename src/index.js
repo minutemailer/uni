@@ -1,2 +1,2 @@
-export { default as createActions } from './createActions';
 export { default as Store } from './Store';
+export { default as withStore } from './withStore.jsx';
